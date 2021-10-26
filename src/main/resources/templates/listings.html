@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>agents List</title>
+    <link href="/webjars/bootstrap/5.1.3/css/bootstrap.css" rel="stylesheet"/>
+    <script src="/webjars/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+    <script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../static/listings.js" th:src="@{/listings.js}" type="application/javascript"></script>
+</head>
+<body>
+<h2>Listings</h2>
+<button class="btn btn-primary" data-bs-target="#addModal" data-bs-toggle="modal" type="button">Add</button>
+<table class="container table table-stripped">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Phone</td>
+        <td>Group Email</td>
+    </tr>
+    <tr th:each="listing:${listings}">
+        <td th:text="${listing.id}">Id</td>
+        <td th:text="${listing.address}">Address</td>
+        <td th:text="${listing.city}">City</td>
+        <td th:text="${listing.price}">Price</td>
+        <td><a class="btn btn-outline-warning" th:href="@{/listings/getOneListing(id=${listing.id})}">Edit</a></td>
+        <td><a class="btn btn-outline-danger" id="deleteButton" th:href="@{/listings/delete(id=${listing.id})}">Delete</a></td>
+    </tr>
+    </thead>
+</table>
+<form method="post" th:action="@{/listings/addNew}">
+    <div aria-hidden="true" aria-labelledby="addModalLabel" class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">New Listing</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="col-form-label" for="addAddress">Address:</label>
+                        <input class="form-control" id="addAddress" name="address" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label" for="addCity">City:</label>
+                        <input class="form-control" id="addCity" name="city" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label" for="addPrice">Price:</label>
+                        <input class="form-control" id="addPrice" name="price" type="text">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<form method="put" th:action="@{/listings/update}">
+    <div aria-hidden="true" aria-labelledby="editModalLabel" class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Listing</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="col-form-label visually-hidden" for="editId">Id:</label>
+                            <input class="form-control visually-hidden" id="editId" name="id" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="editAddress">Address:</label>
+                            <input class="form-control" id="editAddress" name="address" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="editCity">City:</label>
+                            <input class="form-control" id="editCity" name="city" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" for="editPrice">Price:</label>
+                            <input class="form-control" id="editPrice" name="price" type="text">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="modal" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Listing</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body">
+                <p>Delete Listing?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
+                <a class="btn btn-primary" href="" id="delRef">Confirm Delete</a></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Over the next two weeks, you will be working on building your own API. The API can be anything you want, as long as it doesn't violate any school policies. Your API must meet the following, minimum requirements:
+Contain at least 5 entities
+Contain all CRUD operations
+Contain at least 1 one-to-many relationship
+Contain at least 1 many-to-many relationship
+Contain different application layers including at least controller, service, and repository
