@@ -2,6 +2,7 @@ package com.sam.controllers;
 
 import com.sam.models.Agent;
 import com.sam.services.AgentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Controller
 @RequestMapping("/agents")
 public class AgentController {
@@ -19,6 +21,7 @@ public class AgentController {
     @RequestMapping("/getAll")
     public String getAll(Model model) {
         List<Agent> agents = agentService.getAll();
+        log.info("What is returned {}", agentService.getAll());
         model.addAttribute("agents", agents);
         return "agents";
     }
@@ -26,6 +29,7 @@ public class AgentController {
     @RequestMapping("/getOne")
     @ResponseBody
     public Optional<Agent> getOne(@RequestParam Integer id) {
+        log.info("What is returned {}", agentService.getOne(id));
         return agentService.getOne(id);
     }
 

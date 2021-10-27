@@ -19,6 +19,12 @@ $('document').ready(function () {
     $('table #deleteButton').on('click', function (event) {
         event.preventDefault();
         var href = $(this).attr('href');
+
+        $.get(href, function (buyers, status) {
+            $('#deleteModal.modal-body').val(buyers.id);
+
+        });
+
         $('#deleteModal #delRef').attr('href', href);
         $('#deleteModal').modal('show');
     });

@@ -6,11 +6,11 @@ $('document').ready(function () {
 
         var href = $(this).attr('href');
 
-        $.get(href, function (messageboard, status) {
-            $('#editOne').val(messageboard.id);
-            $('#editTwo').val(messageboard.themessage);
-            $('#editThree').val(messageboard.fromwho);
-            $('#editFour').val(messageboard.towho);
+        $.get(href, function (message, status) {
+            $('#editOne').val(message.id);
+            $('#editTwo').val(message.themessage);
+            $('#editThree').val(message.fromwho);
+            $('#editFour').val(message.towho);
         });
 
         $('#editModal').modal('show');

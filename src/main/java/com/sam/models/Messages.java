@@ -11,7 +11,7 @@ import javax.persistence.*;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class MessageBoard {
+public class Messages {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -20,6 +20,9 @@ public class MessageBoard {
     private String themessage;
     private String fromwho;
     private String towho;
+
+    @ManyToOne
+    private Agent agent;
 
     public Integer getId() {
         return id;

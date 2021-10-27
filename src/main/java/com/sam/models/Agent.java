@@ -32,6 +32,9 @@ public class Agent {
     @OneToMany(targetEntity = Buyers.class)
     private List<Buyers> buyersList;
 
+    @OneToMany(targetEntity = Messages.class)
+    private List<Messages> msgBoardList;
+
     public Integer getId() {
         return id;
     }

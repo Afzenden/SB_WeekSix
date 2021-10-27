@@ -17,8 +17,8 @@ public class ListingsService {
         return (List<Listings>) listingsRepository.findAll();
     }
 
-    public Optional<Listings> getOneListing(Integer Id) {
-        return listingsRepository.findById(Id);
+    public Optional<Listings> getOneListing(Integer id) {
+        return listingsRepository.findById(id);
     }
 
     public Listings addNew(Listings buyers) {
@@ -29,8 +29,8 @@ public class ListingsService {
         return listingsRepository.save(buyers);
     }
 
-    public void delete(Integer Id) {
-        listingsRepository.deleteById(Id);
+    public void delete(Integer id) {
+        listingsRepository.deleteById(id);
     }
 
 }

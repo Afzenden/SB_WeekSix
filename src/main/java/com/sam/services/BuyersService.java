@@ -2,6 +2,7 @@ package com.sam.services;
 
 import com.sam.models.Buyers;
 import com.sam.repositories.BuyersRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class BuyersService {
 
     @Autowired
@@ -18,8 +20,8 @@ public class BuyersService {
         return (List<Buyers>) buyersRepository.findAll();
     }
 
-    public Optional<Buyers> getOneBuyer(Integer Id) {
-        return buyersRepository.findById(Id);
+    public Optional<Buyers> getOneBuyer(Integer id) {
+        return buyersRepository.findById(id);
     }
 
     public Buyers addNew(Buyers buyers) {
@@ -30,8 +32,8 @@ public class BuyersService {
         return buyersRepository.save(buyers);
     }
 
-    public void delete(Integer Id) {
-        buyersRepository.deleteById(Id);
+    public void delete(Integer id) {
+        buyersRepository.deleteById(id);
     }
 
 }

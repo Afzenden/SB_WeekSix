@@ -9,15 +9,15 @@
     <script src="../static/buyers.js" th:src="@{/buyers.js}" type="application/javascript"></script>
 </head>
 <body>
-<h2>List of Buyers</h2>
+<h2>Buyers</h2>
 <button class="btn btn-primary" data-bs-target="#addModal" data-bs-toggle="modal" type="button">Add</button>
 <table class="container table table-stripped">
     <thead>
     <tr>
         <td>Id</td>
         <td>Name</td>
-        <td>Phone</td>
-        <td>Group Email</td>
+        <td>Price</td>
+        <td>City</td>
     </tr>
     <tr th:each="buyer:${buyers}">
         <td th:text="${buyer.id}">Id</td>
@@ -64,7 +64,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Edit Agent</h5>
+                    <h5 class="modal-title" id="editModalLabel">Edit Buyer</h5>
                     <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body">
@@ -103,7 +103,7 @@
                 <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
             </div>
             <div class="modal-body">
-                <p>Delete Buyer?</p>
+                <p th:each="buyer:${buyers}">Delete Buyer: <span th:text="${buyer.name}"></span>?</p>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
